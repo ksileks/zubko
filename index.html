@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZUBKO - Čuvar tvog osmeha</title>
+    
+    <!-- Tailwind CSS CDN for utility fallback & foundation -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for modern soft rounded typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-start: #EAF8FF;
+            --bg-mid: #C9EDF9;
+            --bg-end: #4FA8DA;
+            --accent-blue: #4FA8DA;
+            --accent-hover: #3b97c9;
+            --accent-active: #2f80ad;
+            --text-navy: #204D73;
+            --card-glass: rgba(255, 255, 255, 0.75);
+            --card-border: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+            color: var(--text-navy);
+            background: radial-gradient(circle at center top, var(--bg-start) 0%, var(--bg-mid) 55%, var(--bg-end) 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Fredoka', 'Nunito', sans-serif;
+        }
+
+        /* Float & Breathe Animation for Mascot */
+        @keyframes floatAndBreathe {
+            0% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.96;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.02);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.96;
+            }
+        }
+
+        /* Synchronized Floor Shadow Scaling Animation */
+        @keyframes shadowScale {
+            0% {
+                transform: scale(1);
+                opacity: 0.35;
+                filter: blur(8px);
+            }
+            50% {
+                transform: scale(0.72);
+                opacity: 0.15;
+                filter: blur(12px);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.35;
+                filter: blur(8px);
+            }
+        }
+
+        .animated-mascot {
+            animation: floatAndBreathe 5.5s ease-in-out infinite;
+            will-change: transform, opacity;
+        }
+
+        .mascot-shadow {
+            animation: shadowScale 5.5s ease-in-out infinite;
+            will-change: transform, opacity;
+        }
+
+        /* Glassmorphism Styling */
+        .glass-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid var(--card-border);
+            box-shadow: 0 20px 40px -15px rgba(32, 77, 115, 0.12),
+                        0 8px 16px -8px rgba(32, 77, 115, 0.08);
+        }
+
+        /* Tactile 3D Button Style */
+        .btn-3d {
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            box-shadow: 0 6px 0px #3182b3, 0 12px 20px rgba(32, 77, 115, 0.2);
+            transition: all 0.15s ease-out;
+        }
+
+        .btn-3d:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0px #2a73a0, 0 16px 24px rgba(32, 77, 115, 0.25);
+        }
+
+        .btn-3d:active {
+            background-color: var(--accent-active);
+            transform: translateY(4px);
+            box-shadow: 0 2px 0px #204D73, 0 6px 10px rgba(32, 77, 115, 0.2);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-between min-h-screen py-8 px-4 sm:px-6 lg:px-8 select-none">
+
+    <header class="text-center mt-2 mb-6 sm:mb-8 z-10">
+        <h1 class="brand-font text-5xl sm:text-6xl md:text-7xl font-bold tracking-wide text-[#204D73] drop-shadow-sm uppercase">
+            ZUBKO
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl font-semibold text-[#204D73]/85 mt-2 tracking-wide">
+            Čuvar tvog osmeha
+        </p>
+    </header>
+
+    <main class="w-full max-w-4xl flex flex-col items-center justify-center my-auto">
+        
+        <!-- Central Mascot Wrapper -->
+        <div class="relative flex flex-col items-center justify-center w-full my-2">
+            
+            <!-- Mascot Image with Floating Animation -->
+            <div class="animated-mascot relative z-10 w-full flex justify-center">
+                <img 
+                    src="tron.jpg" 
+                    alt="Zubko Tron Robot Asistent" 
+                    class="w-full max-w-[320px] sm:max-w-[420px] md:max-w-[520px] h-auto object-contain rounded-full shadow-lg mix-blend-multiply"
+                    onerror="this.onerror=null; this.src='tron.png';"
+                />
+            </div>
+
+            <!-- Soft Floor Blur Shadow -->
+            <div class="mascot-shadow w-48 sm:w-64 md:w-80 h-5 sm:h-7 bg-[#204D73] rounded-[100%] mt-2 sm:mt-1 pointer-events-none"></div>
+        </div>
+
+        <section class="w-full max-w-md mt-8 mb-4">
+            <div class="glass-card rounded-3xl p-6 sm:p-8 text-center flex flex-col items-center gap-5">
+                
+                <div class="space-y-2">
+                    <h2 class="brand-font text-2xl sm:text-3xl font-bold text-[#204D73]">
+                        Preuzmi Zubko aplikaciju
+                    </h2>
+                    <p class="text-sm sm:text-base font-semibold text-[#204D73]/80 leading-snug">
+                        Isprobaj svog pametnog asistenta za negu i praćenje proteze.
+                    </p>
+                </div>
+
+                <!-- Direct File Link -->
+                <a 
+                    href="zubko.apk" 
+                    download="zubko.apk" 
+                    class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#204D73]/70 hover:text-[#204D73] underline decoration-2 underline-offset-4 transition-colors"
+                    title="Preuzmi direktan APK fajl"
+                >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                    </svg>
+                    <span>zubko.apk</span>
+                </a>
+
+                <!-- Big 3D Download Button -->
+                <a 
+                    href="zubko.apk" 
+                    download="zubko.apk" 
+                    class="btn-3d w-full py-4 px-8 rounded-2xl brand-font text-xl sm:text-2xl font-bold tracking-wide uppercase flex items-center justify-center gap-3 cursor-pointer"
+                >
+                    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+                        <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+                    </svg>
+                    <span>Preuzmi APK</span>
+                </a>
+
+                <!-- Android APK Note -->
+                <p class="text-[11px] sm:text-xs text-[#204D73]/65 leading-tight max-w-xs mt-1">
+                    Za instalaciju APK fajla potrebno je omogućiti instaliranje aplikacija iz ovog izvora na Android telefonu.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-8 text-center text-xs font-semibold text-[#204D73]/60">
+        <p>&copy; Zubko. Sva prava zadržana.</p>
+    </footer>
+
+</body>
+</html>
